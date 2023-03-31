@@ -2,10 +2,10 @@ import Layout from '../../components/layout';
 import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
-// import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const response = await fetch('https://dev.to/api/articles');
+  const api = process.env.API_URL;
+  const response = await fetch(api);
   const data =  await response.json();
 
   const paths = data.map(post => {
